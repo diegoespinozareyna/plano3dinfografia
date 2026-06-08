@@ -26,7 +26,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="embed-caption">Plano interactivo de Parques de Paracas — vista en vivo del sistema</div>
+        {/* <div className="embed-caption">Plano interactivo de Parques de Paracas — vista en vivo del sistema</div> */}
 
         <div className="legend">
           <div className="legend-item"><div className="legend-dot" style={{ background: '#22C55E' }}></div>Vendido</div>

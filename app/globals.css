@@ -14,7 +14,11 @@ html, body {
   color: var(--text);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
 }
+html { scroll-behavior: smooth; }
+img, svg { max-width: 100%; }
+
 .page {
   max-width: 1100px;
   margin: 30px auto;
@@ -42,8 +46,9 @@ html, body {
   font-size: 28px;
   color: var(--navy);
   box-shadow: 0 8px 22px rgba(245,158,11,0.4), inset 0 -3px 0 rgba(0,0,0,0.2);
+  flex-shrink: 0;
 }
-.header h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
+.header h1 { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; }
 .header .sub { color: var(--muted); margin-top: 4px; font-size: 15px; }
 
 /* === HERO === */
@@ -69,6 +74,7 @@ html, body {
   font-weight: 800;
   letter-spacing: -0.8px;
   margin-bottom: 12px;
+  line-height: 1.15;
 }
 .hero h2 span { color: var(--gold); }
 .hero p {
@@ -135,6 +141,7 @@ html, body {
 .legend-dot {
   width: 14px; height: 14px; border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  flex-shrink: 0;
 }
 
 /* === FEATURES === */
@@ -156,6 +163,7 @@ html, body {
   font-size: 26px;
   font-weight: 800;
   margin-bottom: 6px;
+  line-height: 1.2;
 }
 .section-sub {
   text-align: center;
@@ -188,7 +196,6 @@ html, body {
   background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
   opacity: 0.9;
 }
-.card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .card-icon {
   flex: 0 0 64px;
   width: 64px;
@@ -219,12 +226,14 @@ html, body {
   padding: 4px 10px;
   border-radius: 999px;
   border: 1px solid rgba(245, 158, 11, 0.28);
+  pointer-events: none;
 }
-.card-body { flex: 1; min-width: 0; padding-right: 30px; }
+.card-body { flex: 1; min-width: 0; padding-right: 44px; }
 .card-title {
   font-size: 16px; font-weight: 700; margin-bottom: 6px;
   color: var(--text);
   line-height: 1.3;
+  overflow-wrap: break-word;
 }
 .card-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
 
@@ -237,8 +246,8 @@ html, body {
   color: var(--navy);
   display: flex; align-items: center; justify-content: space-between; gap: 30px;
 }
-.cta-text { flex: 1; }
-.cta-text h3 { font-size: 24px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.4px; }
+.cta-text { flex: 1; min-width: 0; }
+.cta-text h3 { font-size: 24px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.4px; line-height: 1.25; }
 .cta-text p { font-size: 15px; color: #1A1308; max-width: 600px; }
 .cta-icon {
   width: 90px; height: 90px;
@@ -255,15 +264,218 @@ html, body {
   text-align: center;
   font-size: 12px;
   color: var(--muted);
+  line-height: 1.5;
 }
 
-@media (max-width: 800px) {
-  .grid { grid-template-columns: 1fr; }
-  .header, .hero, .features, .cta { padding-left: 24px; padding-right: 24px; }
-  .cta { flex-direction: column; text-align: center; }
-  .card-body { padding-right: 0; }
-  .card-num { position: static; align-self: flex-start; margin-bottom: 8px; }
+/* ===================================================================== */
+/* RESPONSIVE — TABLET (≤ 900px)                                          */
+/* ===================================================================== */
+@media (max-width: 900px) {
+  .page {
+    margin: 16px;
+    max-width: calc(100% - 32px);
+    border-radius: 16px;
+  }
+  .header { padding: 28px 32px; gap: 18px; }
+  .brand-mark { width: 56px; height: 56px; font-size: 24px; border-radius: 12px; }
+  .header h1 { font-size: 23px; }
+  .header .sub { font-size: 14px; }
+
+  .hero { padding: 40px 32px 30px; }
+  .hero h2 { font-size: 30px; }
+  .hero p { font-size: 15px; }
+
+  .embed-wrapper { border-radius: 18px; }
+  .features { padding: 40px 32px 40px; }
+  .section-title { font-size: 23px; }
+
+  .grid { grid-template-columns: 1fr; gap: 14px; }
+  .card { padding: 20px; gap: 16px; }
+
+  .cta { padding: 30px 32px; gap: 22px; }
+  .cta-text h3 { font-size: 22px; }
+  .foot { padding: 16px 32px; }
 }
+
+/* ===================================================================== */
+/* RESPONSIVE — MÓVIL (≤ 640px)                                           */
+/* ===================================================================== */
+@media (max-width: 640px) {
+  .page {
+    margin: 0;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Header */
+  .header {
+    padding: 22px 20px;
+    gap: 14px;
+    border-bottom-width: 3px;
+  }
+  .brand-mark {
+    width: 46px; height: 46px;
+    font-size: 20px;
+    border-radius: 11px;
+  }
+  .header h1 { font-size: 18px; letter-spacing: -0.2px; }
+  .header .sub { font-size: 12px; margin-top: 2px; }
+
+  /* Hero */
+  .hero { padding: 32px 20px 26px; }
+  .eyebrow {
+    font-size: 10px;
+    padding: 5px 12px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+  .hero h2 {
+    font-size: 24px;
+    letter-spacing: -0.3px;
+    margin-bottom: 10px;
+  }
+  .hero p {
+    font-size: 13.5px;
+    margin-bottom: 22px;
+    line-height: 1.55;
+  }
+
+  /* Embed — más cuadrado para aprovechar espacio vertical en celular */
+  .embed-wrapper {
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.5),
+      0 0 0 1px rgba(245,158,11,0.22),
+      0 0 30px rgba(245,158,11,0.06);
+  }
+  .embed-caption {
+    margin-top: 12px;
+    font-size: 11.5px;
+    padding: 0 14px;
+  }
+  .legend {
+    gap: 10px 14px;
+    margin-top: 16px;
+    padding: 0 6px;
+  }
+  .legend-item { font-size: 11.5px; gap: 6px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+
+  /* Features */
+  .features { padding: 36px 20px 36px; }
+  .section-eyebrow { font-size: 11px; letter-spacing: 1.2px; }
+  .section-title { font-size: 20px; }
+  .section-sub { font-size: 13px; margin-bottom: 26px; }
+
+  .grid { gap: 12px; }
+  .card {
+    padding: 18px 18px 18px 18px;
+    gap: 14px;
+    border-radius: 14px;
+  }
+  .card-icon {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+  .card-icon svg { width: 26px; height: 26px; }
+  .card-num {
+    top: 11px;
+    right: 11px;
+    font-size: 9.5px;
+    padding: 3px 8px;
+    letter-spacing: 1px;
+  }
+  .card-body { padding-right: 42px; }
+  .card-title { font-size: 14.5px; margin-bottom: 4px; }
+  .card-desc { font-size: 12.5px; line-height: 1.5; }
+
+  /* CTA */
+  .cta {
+    padding: 28px 22px;
+    flex-direction: column;
+    text-align: center;
+    gap: 18px;
+  }
+  .cta-text { width: 100%; }
+  .cta-text h3 { font-size: 20px; }
+  .cta-text p { font-size: 13.5px; margin: 0 auto; }
+  .cta-icon {
+    width: 72px; height: 72px;
+    border-radius: 18px;
+    order: -1;
+  }
+  .cta-icon svg { width: 40px; height: 40px; }
+
+  /* Foot */
+  .foot {
+    padding: 16px 22px;
+    font-size: 11px;
+  }
+}
+
+/* ===================================================================== */
+/* RESPONSIVE — EXTRA SMALL (≤ 380px)                                     */
+/* ===================================================================== */
+@media (max-width: 380px) {
+  .header { padding: 20px 16px; gap: 12px; }
+  .header h1 { font-size: 16px; }
+  .header .sub { font-size: 11.5px; }
+  .brand-mark { width: 42px; height: 42px; font-size: 18px; }
+
+  .hero { padding: 28px 16px 22px; }
+  .hero h2 { font-size: 21px; }
+  .hero p { font-size: 13px; }
+
+  .features { padding: 30px 16px 30px; }
+  .section-title { font-size: 18px; }
+
+  .card { padding: 16px 14px; gap: 12px; border-radius: 12px; }
+  .card-icon {
+    flex: 0 0 46px;
+    width: 46px; height: 46px;
+    border-radius: 12px;
+  }
+  .card-icon svg { width: 22px; height: 22px; }
+  .card-num {
+    top: 9px; right: 9px;
+    font-size: 9px;
+    padding: 2px 7px;
+  }
+  .card-body { padding-right: 38px; }
+  .card-title { font-size: 13.5px; }
+  .card-desc { font-size: 12px; }
+
+  .cta { padding: 24px 16px; }
+  .cta-text h3 { font-size: 18px; }
+  .foot { padding: 14px 16px; font-size: 10.5px; }
+}
+
+/* ===================================================================== */
+/* HOVER — solo dispositivos con mouse (no en touch)                       */
+/* ===================================================================== */
+@media (hover: hover) {
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+}
+
+/* Feedback táctil sutil en mobile */
+@media (hover: none) {
+  .card:active {
+    transform: scale(0.99);
+    border-color: var(--accent);
+    transition: transform 0.1s ease, border-color 0.1s ease;
+  }
+}
+
+/* ===================================================================== */
+/* PRINT                                                                  */
+/* ===================================================================== */
 @media print {
   body { background: white; }
   .page { box-shadow: none; margin: 0; border-radius: 0; max-width: 100%; }

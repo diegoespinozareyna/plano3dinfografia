@@ -90,7 +90,7 @@ img, svg { max-width: 100%; }
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 5 / 4;
   border-radius: 22px;
   overflow: hidden;
   background: #0B1426;
@@ -343,7 +343,7 @@ img, svg { max-width: 100%; }
 
   /* Embed — más cuadrado para aprovechar espacio vertical en celular */
   .embed-wrapper {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4 / 5;
     border-radius: 14px;
     box-shadow:
       0 20px 40px rgba(0,0,0,0.5),

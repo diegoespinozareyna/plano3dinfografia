@@ -4,7 +4,6 @@ export default function Home() {
 
       {/* HEADER */}
       <div className="header">
-        <div className="brand-mark">M</div>
         <div>
           <h1>Sistema Web de Venta de Lotes de Terreno</h1>
           <div className="sub">Plataforma integral para inmobiliarias y desarrolladoras</div>
